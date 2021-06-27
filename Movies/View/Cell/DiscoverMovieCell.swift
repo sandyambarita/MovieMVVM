@@ -9,15 +9,14 @@ import UIKit
 
 class DiscoverMovieCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBOutlet weak var lblDiscover: UILabel!
+    @IBOutlet weak var lblRelaseDate: UILabel!
+    @IBOutlet weak var imgPoster: UIImageView!
+    
+    func configureCell(data: DiscoverData) {
+        lblDiscover.text = data.title
+        lblRelaseDate.text = data.releaseDate?.formatDate()
+        imgPoster.loadFromUrl(path: data.posterPath ?? "")
     }
     
 }

@@ -12,12 +12,13 @@ import youtube_ios_player_helper
 class YTPlayerVC: UIViewController , YTPlayerViewDelegate{
     @IBOutlet var playerView: YTPlayerView!
     
-    internal var viedeoId: String?
+    internal var movieVideoData: MovieVideoData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         playerView.delegate = self
-        playerView.load(withVideoId: "https://www.youtube.com/watch?v=\(viedeoId)" ?? "")
+        let playerVars = ["playsinline": 0]
+        playerView.load(withVideoId: movieVideoData?.key ?? "", playerVars: playerVars)
     }
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {

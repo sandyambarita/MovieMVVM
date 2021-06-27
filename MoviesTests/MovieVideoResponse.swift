@@ -16,7 +16,7 @@ class MovieVideoResponse: XCTestCase {
         request.fetchMovieVideo(id: 550) { data in
             XCTAssertNotNil(data)
             XCTAssertNil(nil)
-            XCTAssertEqual("Fight Club", data?.description)
+            XCTAssertEqual("Fight Club | #TBT Trailer | 20th Century FOX", data?.first?.name)
             exp.fulfill()
         }
         waitForExpectations(timeout: 3)

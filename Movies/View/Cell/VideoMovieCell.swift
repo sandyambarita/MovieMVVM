@@ -8,10 +8,11 @@
 import UIKit
 
 class VideoMovieCell: UICollectionViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet var lblName: UILabel!
+    @IBOutlet var backgroundImg: UIImageView!
+    
+    func configureCell(data: MovieVideoData) {
+        lblName.text = data.name
     }
 
 }

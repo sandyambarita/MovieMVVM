@@ -6,25 +6,39 @@
 //
 
 import Foundation
-import RxSwift
-import RxCocoa
 
-class OfficialGendresVM {
+class OfficialGenresVM {
     
-    private var disposeBag = DisposeBag()
+    var genreData: [GenreData] = []
+    var genre: Genres?
+    var apimanager = APIManager()
     
-    let listGendres: BehaviorRelay<Gendres> = BehaviorRelay(value: Gendres(gendres: <#[GendreData]?#>))
-    
-    func fetchListGendres() {
-        API.fetchListGendres().subscribe(onNext: { (response) in
-            if response.gendres != nil {
-                self.listGendres.accept(response.gendres!)
+    func fetchListGenres(completion: @escaping(Genres?) -> ()) {
+        apimanager.fetchListGenres() { (data) in
+            if data != nil {
+                do {
+                    let decoder = JSONDecoder()
+                    let data = try decoder.decode(Genres.self, from: data!)
+                    self.genreData = data.genres!
+                    completion(data)
+                } catch {
+                    print("error trying to convert data to JSON: \(error)")
+                }
+            } else {
+                print("nil")
             }
-            
-            print(response)
-        }, onError: { (error) in
-            print("error: \(error)")
-        }).disposed(by: disposeBag)
+        }
+    }
+    
+    func numberOfRowsInSection() -> Int {
+        return self.genreData.count
+    }
+    
+    func genreAtIndex(index: Int) -> GenreData {
+        let genre = self.genreData[index]
+        return genre
     }
     
 }
+
+

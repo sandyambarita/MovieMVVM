@@ -1,0 +1,22 @@
+PODS:
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
+  - youtube-ios-player-helper (1.0.3)
+
+DEPENDENCIES:
+  - Kingfisher (~> 5.0)
+  - youtube-ios-player-helper
+
+SPEC REPOS:
+  trunk:
+    - Kingfisher
+    - youtube-ios-player-helper
+
+SPEC CHECKSUMS:
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  youtube-ios-player-helper: 0185c57db23c80d63d6ca11251d110abb8a4ca61
+
+PODFILE CHECKSUM: bb50b46f8ac81644cab4eb62684d880e1fe7ec17
+
+COCOAPODS: 1.10.1
